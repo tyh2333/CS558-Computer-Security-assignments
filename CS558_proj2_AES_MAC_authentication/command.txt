@@ -1,0 +1,1 @@
+ g++ -isystem /Users/macbook/Desktop/openssl-1.0.2-beta3/compiled/ main.cpp -lcrypto -L/Users/macbook/Desktop/openssl-1.0.2-beta3/compiled/lib -o ./exec

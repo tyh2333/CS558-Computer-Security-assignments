@@ -1,0 +1,61 @@
+1. Due to different install position of openssl in different platform, so you should
+
+change some part of the compile command:
+	
+	This is my command:
+
+	g++ -isystem /Users/macbook/Desktop/openssl-1.0.2-beta3/compiled/ ic.cpp -lcrypto -L 
+	
+/usr/local/lib -std=c++11 -o ./exec
+
+	after compile you can get a exec excutable file.
+
+	And you can use following command to run the code: 
+
+		./exec <input_file> 
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+				Example of how to run the code : 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+terrys-MacBook-Pro:ciphering macbook$ make
+g++ -isystem /Users/macbook/Desktop/openssl-1.0.2-beta3/compiled/ cipher.cpp -lcrypto -L/usr/local/lib -std=c++11 -o ./exec
+terrys-MacBook-Pro:ciphering macbook$ ./exec test_case1.txt 
+
+source:     981ba682 4c1bfb1a b4854720 29b71d80 
+            8ce33e2c c3c0b5fc 1f3de8a6 dc66b1f0 
+            
+
+recovered:  981ba682 4c1bfb1a b4854720 29b71d80 
+            8ce33e2c c3c0b5fc 1f3de8a6 dc66b1f0 
+            
+
+cipher:     e9fed8a6 3d155304 d71df20b f3e82214 
+            b20ed7da d2f233dc 3c22d7bd eeed8e78 
+            
+terrys-MacBook-Pro:ciphering macbook$ ./exec test_case2.txt
+
+source:     7ec61272 743bf161 4726446a 6c38ced1 
+            66f6ca76 eb543004 4286346c ef130f92 
+            922b0345 0d3a9975 e5bd2ea0 eb55ad8e 
+            1b199e3e c4316020 e9a1b285 e7627953 
+            59b7bdfd 39bef4b2 484583d5 afe082ae 
+            e638bf5f d5a60619 3901a08f 4ab41aab 
+            9b134880 
+
+recovered:  7ec61272 743bf161 4726446a 6c38ced1 
+            66f6ca76 eb543004 4286346c ef130f92 
+            922b0345 0d3a9975 e5bd2ea0 eb55ad8e 
+            1b199e3e c4316020 e9a1b285 e7627953 
+            59b7bdfd 39bef4b2 484583d5 afe082ae 
+            e638bf5f d5a60619 3901a08f 4ab41aab 
+            9b134880 
+
+cipher:     59616053 53c64bdc a15b195e 288553a9 
+            10632506 d6200aa7 90c4c806 c99904cf 
+            2445cc50 bb1cf168 a4967373 4e081b57 
+            e324ce52 59c0e78d 4cd97b87 0976503c 
+            0943f2cb 5ae8f052 c7b7d392 239587b8 
+            956086bc ab188360 42e2e6ce 42432a17 
+            105c53d0 

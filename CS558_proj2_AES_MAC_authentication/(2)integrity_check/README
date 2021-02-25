@@ -1,0 +1,66 @@
+1. Due to different install position of openssl in different platform, so you should
+
+change some part of the compile command:
+	
+	This is my command:
+
+	g++ -isystem /Users/macbook/Desktop/openssl-1.0.2-beta3/compiled/ ic.cpp -lcrypto -L 
+	
+/usr/local/lib -std=c++11 -o ./exec
+
+	after compile you can get a exec excutable file.
+
+	And you can use following command to run the code: 
+
+		./exec <input_file> 
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+				Example of how to run the code : 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+terrys-MacBook-Pro:integrity_check macbook$ make
+g++ -isystem /Users/macbook/Desktop/openssl-1.0.2-beta3/compiled/ ic.cpp -lcrypto -L /usr/local/lib -std=c++11 -o ./exec
+terrys-MacBook-Pro:integrity_check macbook$ ./exec test_case1.txt 
+--------------------------------------------------
+Subkey Generation
+K              d3c5d592 327fb11c 4035c668 0af8c6d1 
+AES_128(key,0) 9b71f299 132915d3 605211b5 e5df8632 
+K1             36e3e532 26522ba6 c0a4236b cbbf0ce3 
+K2             6dc7ca64 4ca4574d 814846d7 977e19c6 
+M              398a59b4 d4000000 484583d5 afe082ae 
+--------------------------------------------------
+    so first 32 bits of AES_CMAC is the MACT: 
+--------------------------------------------------
+AES_CMAC=      b93787e6 493ff113 ad73d3e0 1e826d73 
+MACT    =      b93787e6
+--------------------------------------------------
+terrys-MacBook-Pro:integrity_check macbook$ ./exec test_case2.txt 
+--------------------------------------------------
+Subkey Generation
+K              2bd6459f 82c5b300 952c4910 4881ff48 
+AES_128(key,0) 6e426138 5adfc1fc b7c85f0c 469fb20c 
+K1             dc84c270 b5bf83f9 6f90be18 8d3f6418 
+K2             b90984e1 6b7f07f2 df217c31 1a7ec8b7 
+M              38a6f056 c0000000 33323462 63393840 
+--------------------------------------------------
+    so first 32 bits of AES_CMAC is the MACT: 
+--------------------------------------------------
+AES_CMAC=      118c6eb8 b775144b 0b831110 54c96eb6 
+MACT    =      118c6eb8
+--------------------------------------------------
+terrys-MacBook-Pro:integrity_check macbook$ ./exec test_case3.txt 
+--------------------------------------------------
+Subkey Generation
+K              7e5e9443 1e11d738 28d739cc 6ced4573 
+AES_128(key,0) d78b4628 35781e79 d2255f8d 309a60ef 
+K1             af168c50 6af03cf3 a44abf1a 6134c159 
+K2             5e2d18a0 d5e079e7 48957e34 c2698235 
+M              36af6144 c4000000 b3d3c917 0a4e1632 f60f8610 13d22d84 b726b6a2 78d802d1 eeaf1321 ba5929dc 
+--------------------------------------------------
+    so first 32 bits of AES_CMAC is the MACT: 
+--------------------------------------------------
+AES_CMAC=      1f60b01d e05aa666 3bda32c6 1771e70b 
+MACT    =      1f60b01d
+--------------------------------------------------
+terrys-MacBook-Pro:integrity_check macbook$ 

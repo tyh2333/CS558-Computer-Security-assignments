@@ -1,0 +1,24 @@
+How to run the program:
+
+(1) compile:
+	
+	make
+
+(2) run :
+
+	 ./main key.txt iv.txt 5 output.txt
+
+(3) if you want to use other test file, the command form is :
+
+	 ./main (key_file) (iv_file) (number of keys) output.txt
+
+(4) You can also use 'make clean'.
+
+(5) There will be a new .txt file named output.txt, you can use command
+	
+	' cat output.txt '
+
+	to check to results.
+
+	And you can also see the output in the terminal.
+
